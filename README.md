@@ -1,6 +1,6 @@
 # r/Place to StableDiffusion
 
-This project was issued to me as a challenge by <a class="user-mention" data-hovercard-type="user" data-hovercard-url="/users/mathieugalle/hovercard" href="/mathieugalle">@mathieugalle</a>.
+This project was issued to me as a challenge by [@mathieugalle](https://github.com/mathieugalle).
 
 The script load StableDiffusion v1.4 and both currently existing canvas from [r/Place](https://www.reddit.com/r/place/), grab a random 64x64 slice from either of them, resize it to 512x512 and pass it to StableDiffusion's image2image pipeline with no textual prompt, then repeats this 3 times, using the output as the next input.
 

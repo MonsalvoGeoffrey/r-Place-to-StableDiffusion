@@ -18,12 +18,30 @@ model_id = "CompVis/stable-diffusion-v1-4"
 device = "cuda"
 
 
+model_list = [
+    "CompVis/stable-diffusion-v1-4",
+    "./stable-diffusion-v1-4",
+    "runwayml/stable-diffusion-v1-5",
+    "./stable-diffusion-v1-5",
+    ]
 
-# Using Local Weight:
-# Download with: git clone https://huggingface.co/CompVis/stable-diffusion-v1-4
-# Then uncomment the following line
-# model_id = "./stable-diffusion-v1-4"
-# This does require to be logged on with "huggingface-cli login" and have accepted the liscense of Stable Diffusion
+
+print("Model List".center(50, "-"))
+print("1. Stable Diffusion 1.4 (from Huggingface)")
+print("2. Stable Diffusion 1.4 (local)")
+print("3. Stable Diffusion 1.5 (from Huggingface)")
+print("4. Stable Diffusion 1.5 (local)")
+model_choice = int(input("Which model would you like to load ? [1-4] "))
+if model_choice < 1 or model_choice > 4:
+    raise ValueError(f"model_choice must be within 1 to 4. Not {model_choice}")
+print("")
+model_id = model_list[model_choice-1]
+print(f"Model ID: {model_id}")
+print("")
+
+
+
+
 
 
 
@@ -64,13 +82,13 @@ def slice_place(places: tuple[Image.Image, ...]):
     """Choose a random canvas from the argument, and return a random 64x64 slice from it resized to 512x512"""
     place = choice(places)
     original_size = place.size
-    target_size = (64, 64)
+    target_size = (32, 32)
 
     # Choose a random top-left coordinate for the slice
     slice = (randint(0, original_size[0]-target_size[0]), randint(0, original_size[1]-target_size[1]))
 
     sliced_place = place.crop( (slice[0], slice[1], slice[0]+target_size[0], slice[1]+target_size[1]) )
-    sliced_place = sliced_place.resize((512, 512))
+    sliced_place = sliced_place.resize((512, 512), Image.Resampling.NEAREST)
     return sliced_place
 
 
@@ -82,7 +100,7 @@ def generate(init_image: Image.Image, recursion=0) -> Image.Image:
     """
     # 10 inference steps seems to be a sweet spot for this.
     # A high number tries too hard to be realistic, while a lower have trouble making any change to the input
-    image: Image.Image = pipe("", init_image=init_image, strengh=0.95, guidance_scale=7.5, num_inference_steps=10).images[0]
+    image: Image.Image = pipe("", init_image=init_image, strengh=0.05, guidance_scale=7.5).images[0]
     if recursion > 0:
         return generate(image, recursion=recursion-1)
     return image
@@ -121,7 +139,7 @@ if not os.path.exists(target_dir):
 def make_image():
     """
         Main function
-        Generate an image from a random 64x64 slice of a r/place canvas
+        Generate an image from a random 32x32 slice of a r/place canvas
         Saves it as well as the original to the output directory
     """
     counter = len(os.listdir(target_dir)) // 3

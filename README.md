@@ -24,6 +24,7 @@ The script can run on a 4GB VRAM GPU. Once the model is loaded, the image genera
 - ADD: Support for Stable Diffusion 1.5<br>
 - CHANGE: the size of slices taken from r/Place canvas from 64x64 to 32x32<br>
 - CHANGE: Inference steps revert back to default<br>
+- CHANGE: Resize with `Image.Resampling.NEAREST`
 - FIX: Change strengh from 0.95 to 0.05<br>
 
 </details>
@@ -90,7 +91,8 @@ I also came to the realisation that I was using the Strengh parameter wrong when
 
 I didn't like that using a local model required editing one line in the code so I added a model selection at the start, leaving the option to use Stable Diffusion 1.4 as well since 1.5 seems to take an insanely longer time to download for the first time due to the large checkpoints file.
 
-I also changed the amount of steps back to default since changing the strench helped avoiding the AI straying too much. And choose to take slices of 32x32 from the r/Place canvas instead of 64x64 since it seems to have less messy results overall.
+I also changed the amount of steps back to default since changing the strench helped avoiding the AI straying too much. And choose to take slices of 32x32 from the r/Place canvas instead of 64x64 since it seems to have less messy results overall.<br>
+Following [@mathieugalle](https://github.com/mathieugalle)'s suggestion, I've also added `Image.Resampling.NEAREST` as an argument to Pillow's resize function.
 
 If I'm going to update this further, I'll probably try to look into fine-tuning the model, in which case I'll probably release the fine-tuned model in the repository as well as removing the recursion.
 </details>

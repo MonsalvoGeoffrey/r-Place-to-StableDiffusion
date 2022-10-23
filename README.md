@@ -15,16 +15,16 @@ The script can run on a 4GB VRAM GPU. Once the model is loaded, the image genera
 
 <details>
 <summary>Version 1.0</summary>
-- Initial Release
+* Initial Release
 </details>
 
 <details>
 <summary>Version 1.1</summary>
-- ADD: Option to choose which model to load upon launching the script
-- ADD: Support for Stable Diffusion 1.5
-- CHANGE: the size of slices taken from r/Place canvas from 64x64 to 32x32
-- CHANGE: Inference steps revert back to default
-- FIX: Change strengh from 0.95 to 0.05
+* ADD: Option to choose which model to load upon launching the script
+* ADD: Support for Stable Diffusion 1.5
+* CHANGE: the size of slices taken from r/Place canvas from 64x64 to 32x32
+* CHANGE: Inference steps revert back to default
+* FIX: Change strengh from 0.95 to 0.05
 
 </details>
 

@@ -85,9 +85,9 @@ def slice_place(places: tuple[Image.Image, ...]):
     target_size = (32, 32)
 
     # Choose a random top-left coordinate for the slice
-    slice = (randint(0, original_size[0]-target_size[0]), randint(0, original_size[1]-target_size[1]))
+    sliced_image = (randint(0, original_size[0]-target_size[0]), randint(0, original_size[1]-target_size[1]))
 
-    sliced_place = place.crop( (slice[0], slice[1], slice[0]+target_size[0], slice[1]+target_size[1]) )
+    sliced_place = place.crop( (sliced_image[0], sliced_image[1], sliced_image[0]+target_size[0], sliced_image[1]+target_size[1]) )
     sliced_place = sliced_place.resize((512, 512), Image.Resampling.NEAREST)
     return sliced_place
 
@@ -154,7 +154,7 @@ def make_image():
 
 
 if __name__ == "__main__":
-    while not (input("Would you like to generate an image? (y/N) ") in "nN") :
+    while input("Would you like to generate an image? (y/N) ") not in "nN" :
         make_image()
 
 

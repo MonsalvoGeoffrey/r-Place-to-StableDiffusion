@@ -23,6 +23,8 @@ model_list = [
     "./stable-diffusion-v1-4",
     "runwayml/stable-diffusion-v1-5",
     "./stable-diffusion-v1-5",
+    "prompthero/midjourney-v4-diffusion",
+    "./midjourney-v4-diffusion",
     ]
 
 
@@ -31,15 +33,17 @@ print("1. Stable Diffusion 1.4 (from Huggingface)")
 print("2. Stable Diffusion 1.4 (local)")
 print("3. Stable Diffusion 1.5 (from Huggingface)")
 print("4. Stable Diffusion 1.5 (local)")
-model_choice = int(input("Which model would you like to load ? [1-4] "))
-if model_choice < 1 or model_choice > 4:
-    raise ValueError(f"model_choice must be within 1 to 4. Not {model_choice}")
+print("5. MidJourney-Style Stable Diffusion (from Huggingface)")
+print("6. MidJourney-Style Stable Diffusion (local)")
+model_choice = int(input(f"Which model would you like to load ? [1-{len(model_list)}] "))
+if model_choice < 1 or model_choice > len(model_list):
+    raise ValueError(f"model_choice must be within 1 to {len(model_list)}. Not {model_choice}")
 print("")
 model_id = model_list[model_choice-1]
 print(f"Model ID: {model_id}")
 print("")
 
-
+is_midjourney = model_id in (5,6,)
 
 
 
@@ -143,11 +147,9 @@ def make_image():
     counter = len(os.listdir(target_dir)) // 3
     init_image = slice_place(places)
     init_image.save(f"{target_dir}/{counter}_original.png")
-    image, stich = stich_generate(init_image, 3)
+    image, stich = stich_generate(init_image, 0 if is_midjourney else 3)
     image.save(f"{target_dir}/{counter}_generated.png")
     stich.save(f"{target_dir}/{counter}_stich.png")
-
-
 
 
 

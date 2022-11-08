@@ -98,8 +98,6 @@ def generate(init_image: Image.Image, recursion=0) -> Image.Image:
         Generate an image from 'init_image' with no text prompt.
         If 'recursion' is over 0, the output will be passed as the next input that many times
     """
-    # 10 inference steps seems to be a sweet spot for this.
-    # A high number tries too hard to be realistic, while a lower have trouble making any change to the input
     image: Image.Image = pipe("", init_image=init_image, strengh=0.05, guidance_scale=7.5).images[0]
     if recursion > 0:
         return generate(image, recursion=recursion-1)

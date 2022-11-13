@@ -28,6 +28,7 @@ The script can run on a 4GB VRAM GPU. Once the model is loaded, the image genera
 - FIX: Change strengh from 0.95 to 0.05<br>
 
 </details>
+<details>
 <summary>Version 1.2</summary>
 - ADD: Support for MidJourney-Style Stable Diffusion<br>
 

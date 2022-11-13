@@ -28,6 +28,10 @@ The script can run on a 4GB VRAM GPU. Once the model is loaded, the image genera
 - FIX: Change strengh from 0.95 to 0.05<br>
 
 </details>
+<summary>Version 1.2</summary>
+- ADD: Support for MidJourney-Style Stable Diffusion<br>
+
+</details>
 
 ---
 ### Instalation:
@@ -59,11 +63,18 @@ git clone https://huggingface.co/runwayml/stable-diffusion-v1-5
 *Disclaimer: Those examples are cherry-picked*
 
 <details>
-<summary>Examples</summary>
+<summary>Stable Difffusion v1.5</summary>
 <img src="examples/example_1.png" />
 <img src="examples/example_2.png" />
 <img src="examples/example_3.png" />
 <img src="examples/example_4.png" />
+</details>
+<details>
+<summary>MidJourney-Style Stable Diffusion</summary>
+<img src="examples/mj_example_1.png" />
+<img src="examples/mj_example_2.png" />
+<img src="examples/mj_example_3.png" />
+<img src="examples/mj_example_4.png" />
 </details>
 
 ---

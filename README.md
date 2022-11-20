@@ -35,7 +35,7 @@ The script can run on a 4GB VRAM GPU. Once the model is loaded, the image genera
 </details>
 <details>
 <summary>Version 1.2.1</summary>
-- CHANCE: Renamed MidJourney-Style Stable Diffusion to it's new name, Openjourney<br>
+- CHANGE Renamed MidJourney-Style Stable Diffusion to it's new name, Openjourney<br>
 
 </details>
 

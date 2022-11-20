@@ -33,6 +33,11 @@ The script can run on a 4GB VRAM GPU. Once the model is loaded, the image genera
 - ADD: Support for MidJourney-Style Stable Diffusion<br>
 
 </details>
+<details>
+<summary>Version 1.2.1</summary>
+- CHANCE: Renamed MidJourney-Style Stable Diffusion to it's new name, Openjourney<br>
+
+</details>
 
 ---
 ### Instalation:
@@ -55,6 +60,8 @@ From that point, you can either run `main.py` and let it download the weights fr
 git clone https://huggingface.co/CompVis/stable-diffusion-v1-4
 # For Stable Diffusion 1.5
 git clone https://huggingface.co/runwayml/stable-diffusion-v1-5
+# For Openjourney
+git clone https://huggingface.co/prompthero/openjourney
 ```
 </details>
 
@@ -71,7 +78,7 @@ git clone https://huggingface.co/runwayml/stable-diffusion-v1-5
 <img src="examples/example_4.png" />
 </details>
 <details>
-<summary>MidJourney-Style Stable Diffusion</summary>
+<summary>Openjourney</summary>
 <img src="examples/mj_example_1.png" />
 <img src="examples/mj_example_2.png" />
 <img src="examples/mj_example_3.png" />

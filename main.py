@@ -23,8 +23,10 @@ model_list = [
     "./stable-diffusion-v1-4",
     "runwayml/stable-diffusion-v1-5",
     "./stable-diffusion-v1-5",
-    "prompthero/midjourney-v4-diffusion",
-    "./midjourney-v4-diffusion",
+    #"prompthero/midjourney-v4-diffusion",
+    #"./midjourney-v4-diffusion",
+    "prompthero/openjourney",
+    "./openjourney",
     ]
 
 
@@ -33,8 +35,8 @@ print("1. Stable Diffusion 1.4 (from Huggingface)")
 print("2. Stable Diffusion 1.4 (local)")
 print("3. Stable Diffusion 1.5 (from Huggingface)")
 print("4. Stable Diffusion 1.5 (local)")
-print("5. MidJourney-Style Stable Diffusion (from Huggingface)")
-print("6. MidJourney-Style Stable Diffusion (local)")
+print("5. Openjourney (from Huggingface)")
+print("6. Openjourney (local)")
 model_choice = int(input(f"Which model would you like to load ? [1-{len(model_list)}] "))
 if model_choice < 1 or model_choice > len(model_list):
     raise ValueError(f"model_choice must be within 1 to {len(model_list)}. Not {model_choice}")

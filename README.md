@@ -35,7 +35,13 @@ The script can run on a 4GB VRAM GPU. Once the model is loaded, the image genera
 </details>
 <details>
 <summary>Version 1.2.1</summary>
-- CHANGE Renamed MidJourney-Style Stable Diffusion to it's new name, Openjourney<br>
+- CHANGE: Renamed MidJourney-Style Stable Diffusion to it's new name, Openjourney<br>
+
+</details>
+<details>
+<summary>Version 1.3</summary>
+- FIX: I don't even know since when it was bugged, but using Openjourney wouldn't set the prompt to "mdjrny-v4 style"<br>
+- CHANGE: Set torch.cuda.HalfTensor as default tensor type to drastically speed up model loading<br>
 
 </details>
 
@@ -114,4 +120,11 @@ I also changed the amount of steps back to default since changing the strench he
 Following [@mathieugalle](https://github.com/mathieugalle)'s suggestion, I've also added `Image.Resampling.NEAREST` as an argument to Pillow's resize function.
 
 If I'm going to update this further, I'll probably try to look into fine-tuning the model, in which case I'll probably release the fine-tuned model in the repository as well as removing the recursion.
+</details>
+
+<details>
+<summary>Version 1.3</summary>
+I haven't touched that project in a while. But I figured it was the perfect one to try out adding the line `torch.set_default_tensor_type(torch.cuda.HalfTensor)` and see if it does anything. And I find that it helps drastiaclly reducing the model loading time since it doesn't need to waste time sending the tensors to the GPU anymore. It seems to be about it however.
+
+In the future I might come back to try to ease using just about any model and adding OpenJourney V2 as a default.
 </details>

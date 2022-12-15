@@ -5,7 +5,7 @@ from random import randint, choice
 from typing import Any
 import os
 
-
+torch.set_default_tensor_type(torch.cuda.HalfTensor)
 
 
 
@@ -45,7 +45,8 @@ model_id = model_list[model_choice-1]
 print(f"Model ID: {model_id}")
 print("")
 
-is_midjourney = model_id in (5,6,)
+is_midjourney = model_choice in (5,6,)
+
 
 
 
@@ -55,8 +56,9 @@ is_midjourney = model_id in (5,6,)
 ### Load The Model
 pipe: Any = StableDiffusionImg2ImgPipeline.from_pretrained(model_id, torch_dtype=torch.float16, revision="fp16", use_auth_token=True)
 
-pipe = pipe.to(device)
+# pipe = pipe.to(device)
 pipe.enable_attention_slicing() # required to fit in 4GB VRAM
+
 
 
 
@@ -104,7 +106,7 @@ def generate(init_image: Image.Image, recursion=0) -> Image.Image:
         Generate an image from 'init_image' with no text prompt.
         If 'recursion' is over 0, the output will be passed as the next input that many times
     """
-    image: Image.Image = pipe("", init_image=init_image, strengh=0.05, guidance_scale=7.5).images[0]
+    image: Image.Image = pipe("mdjrny-v4 style" if is_midjourney else "", init_image=init_image, strengh=0.05, guidance_scale=7.5).images[0]
     if recursion > 0:
         return generate(image, recursion=recursion-1)
     return image
